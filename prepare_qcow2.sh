@@ -11,10 +11,15 @@ clear
 
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
-        echo "sudo $0"
+        echo "sudo $0 <Clavister img>"
   exit
 fi
 
+if [ "$#" -ne 1 ]
+then
+  echo "Usage: sudo $0 <Clavister img>"
+  exit 1
+fi
 
 while [ answer != "x" ]
 do
@@ -186,7 +191,7 @@ echo "<domain type='kvm' id='34'>
     <emulator>$emu</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='raw' cache='none' io='native'/>
-      <source file='$source_file/Core-clone.img'/>
+      <source file='$source_file/$1'/>
       <target dev='hda' bus='ide'/>
       <address type='drive' controller='0' bus='0' target='0' unit='0'/>
     </disk>
@@ -386,7 +391,7 @@ echo "<domain type='kvm' id='34'>
     <emulator>$emu</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='raw' cache='none' io='native'/>
-      <source file='$source_file/Core-clone.img'/>
+      <source file='$source_file/$1'/>
       <target dev='hda' bus='ide'/>
       <address type='drive' controller='0' bus='0' target='0' unit='0'/>
     </disk>
@@ -469,9 +474,7 @@ if [ -z "$define" ]; then
 
 	fi
 fi
-#done
 ;;
-#exit 
 
 2)
 echo "Please type in the security gateway name"
@@ -635,7 +638,7 @@ echo "<domain type='kvm' id='34'>
     <emulator>$emu</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2' cache='none' io='native'/>
-      <source file='$source_file/cOS_Stream.qcow2'/>
+      <source file='$source_file/$1'/>
       <target dev='vda' bus='virtio'/>
 	<alias name='virtio-disk0'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x0'/>
@@ -849,7 +852,7 @@ echo "<domain type='kvm' id='34'>
     <emulator>$emu</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2' cache='none' io='native'/>
-      <source file='$source_file/cOS_Stream.qcow2'/>
+      <source file='$source_file/$1'/>
       <target dev='vda' bus='virtio'/>
 	<alias name='virtio-disk0'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x0'/>
