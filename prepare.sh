@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-#v0.09
+#v1.00
 
 #Copyright (C) 2015 Clavister AB
 #This program is free software: you can redistribute it and/or modify it under the terms of the 
@@ -192,10 +192,10 @@ echo "<domain type='kvm' id='34'>
   <devices>
     <emulator>$emu</emulator>
     <disk type='file' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='native'/>
+      <driver name='qemu' type='raw' cache='none'/>
       <source file='$source_file/$1'/>
-      <target dev='hda' bus='ide'/>
-      <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+      <target dev='vda' bus='virtio'/>
+      <address type='pci' controller='0' bus='0' target='0' unit='0'/>
     </disk>
     <controller type='ide' index='0'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x1'/>
@@ -219,8 +219,8 @@ echo "<domain type='kvm' id='34'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
     </interface>
     <input type='mouse' bus='ps2'/>
-    <graphics type='vnc' port='$port' autoport='no' listen='$ip'>
-      <listen type='address' address='$ip'/>
+	<graphics type='vnc' autoport='yes' listen='0.0.0.0'>
+      <listen type='address' address='0.0.0.0'/>
     </graphics>
     <video>
       <model type='cirrus' vram='9216' heads='1'/>
@@ -392,10 +392,9 @@ echo "<domain type='kvm' id='34'>
   <devices>
     <emulator>$emu</emulator>
     <disk type='file' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='native'/>
+      <driver name='qemu' type='raw' cache='none'/>
       <source file='$source_file/$1'/>
-      <target dev='hda' bus='ide'/>
-      <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+      <target dev='vda' bus='virtio'/>
     </disk>
     <controller type='ide' index='0'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x1'/>
@@ -425,8 +424,8 @@ echo "<domain type='kvm' id='34'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
     </interface>
     <input type='mouse' bus='ps2'/>
-    <graphics type='vnc' port='$port' autoport='no' listen='$ip'>
-      <listen type='address' address='$ip'/>
+	<graphics type='vnc' autoport='yes' listen='0.0.0.0'>
+      <listen type='address' address='0.0.0.0'/>
     </graphics>
     <video>
       <model type='cirrus' vram='9216' heads='1'/>
