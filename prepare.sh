@@ -1,7 +1,8 @@
 #!/bin/bash
 clear
 
-#v1.00
+#v1.00.01
+
 
 #Copyright (C) 2015 Clavister AB
 #This program is free software: you can redistribute it and/or modify it under the terms of the 
