@@ -218,7 +218,12 @@ echo "<domain type='kvm' id='34'>
       <driver name='vhost' txmode='timer' ioeventfd='on' event_idx='off'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
     </interface>
-    <input type='mouse' bus='ps2'/>
+	<serial type='pty'>
+      <target port='0'/>
+    </serial>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
 	<graphics type='vnc' autoport='yes' listen='0.0.0.0'>
       <listen type='address' address='0.0.0.0'/>
     </graphics>
@@ -423,7 +428,12 @@ echo "<domain type='kvm' id='34'>
       <driver name='vhost' txmode='timer' ioeventfd='on' event_idx='off'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
     </interface>
-    <input type='mouse' bus='ps2'/>
+	<serial type='pty'>
+      <target port='0'/>
+    </serial>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
 	<graphics type='vnc' autoport='yes' listen='0.0.0.0'>
       <listen type='address' address='0.0.0.0'/>
     </graphics>
